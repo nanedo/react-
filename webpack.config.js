@@ -25,14 +25,26 @@ module.exports = {
   }, */
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.[hash:7].js',
-    // publicPath: '/dist/'
+    //filename: 'index.[hash:7].js',
+    filename: 'js/app.js',
+    publicPath: '/dist/'
   },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     port: 8088,
-    inline: true,
-    progress: true
+    historyApiFallback: {
+      index: '/dist/index.html'
+    },
+    overlay: {
+      warnings: true,
+      errors: true
+    },
+    proxy: {
+      "/api": {
+        target: "http://localhost:3000",
+        pathRewrite: {"^/api" : ""}
+      }
+    }
   },
   module: {
     rules: [
@@ -89,23 +101,20 @@ module.exports = {
     })
   ],
   optimization: {
-    runtimeChunk: {
-      name: "manifest"
-    },
+    runtimeChunk: true,
+    namedModules: true,
 		splitChunks: {
 			cacheGroups: {
 				commons: {
 					chunks: "all",
 					minChunks: 2,
-					maxInitialRequests: 5, // The default limit is too small to showcase the effect
-					minSize: 1 // This is example is too small to create commons chunks
+					maxInitialRequests: 5 // The default limit is too small to showcase the effect
 				},
 				vendor: {
 					test: /node_modules/,
 					chunks: "all",
 					name: "vendor",
-					priority: 10,
-					enforce: true
+					priority: 10
 				}
 			}
 		}
