@@ -25,6 +25,7 @@ class Child1 extends React.Component {
   render () {
     return (
       <div>
+        <Clock />
         <button onClick={this.handleChangeName2.bind(this)}>改兄弟组件的值</button>
       </div>
     )
