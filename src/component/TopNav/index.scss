@@ -4,3 +4,9 @@
 .dropdown:hover>.dropdown-menu{
   display: block;
 }
+.skin-blue .main-header .navbar .dropdown-menu li a{
+  color: #777 !important;
+}
+.skin-blue .main-header .navbar .dropdown-menu li a:hover{
+  color: #fff !important;
+}

@@ -15,14 +15,24 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const rewireLess = require('react-app-rewire-less');
 
+// console.log('===================test file path==================')
+// console.log(path.join(__dirname,'src'))
+// console.log(path.join(__dirname,'.','src'))
+// console.log(path.resolve(__dirname,'src'))
+// console.log(path.resolve(__dirname,'src/'))
+// console.log(path.resolve(__dirname,'./src'))
+// 都是输出 G:\project\waibao\BookProject\imooc\react\179\src
+
+
+
 module.exports = {
   entry: './src/app.jsx',
   mode: 'development',
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
-    /* alias: {
-      '@': path.resolve(__dirname,'src')
-    }*/
+    alias: {
+      '@': path.join(__dirname,'src')
+    }
   }, 
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -41,9 +51,13 @@ module.exports = {
       errors: true
     },
     proxy: {
-      "/api/*": {
-        target: "http://localhost:3000",
-        pathRewrite: {"^/api" : ""}
+      "/manage/*": {
+        target: "http://localhost:3001",
+       // pathRewrite: {"^/api" : ""}
+      },
+      "/public/upload/*": {
+        target: "http://localhost:3001",
+        pathRewrite: {"^/public" : ""}
       }
     },
     historyApiFallback: true

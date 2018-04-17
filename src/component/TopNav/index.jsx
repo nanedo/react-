@@ -1,4 +1,9 @@
 import React from 'react'
+import User from '@/service/user-service'
+import Mutil from '@/util/mm'
+
+const _mm = new Mutil()
+const _user = new User()
 
 import './index.scss'
 
@@ -6,22 +11,35 @@ class TopNav extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      current: 'mail',
-      username: 'nanedo'
+      username: ''
     }
   }
 
-  handleClick (e) {
-    this.setState({
-      current: e.key,
-    });
+  componentWillMount () {
+    let user = _mm.getStorage('userInfo')
+    if(user){
+      this.setState({
+        username: user.username
+      })
+    } else {
+      _mm.doLogin()
+    }
   }
 
-  handleDropDownClick (e) {
-
+  onLogout () {
+    _mm.doLogout().then(
+      () => {
+        _mm.removeStorage('userInfo')
+        _mm.doLogin()
+      },
+      (err) => {
+        _mm.errorTip(err)
+      }
+    )
   }
 
-  onCollapseSideBar () {
+  onCollapseSideBar (e) {
+    e.preventDefault()
     if(window.innerWidth < 767){
       // 小屏幕的判断
       document.body.classList.toggle('sidebar-open')
@@ -50,11 +68,11 @@ class TopNav extends React.Component {
           <div className="navbar-custom-menu">
           <ul className="nav navbar-nav">
             <li className="dropdown">
-                <a href="#" className="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">欢迎您，{this.state.username} <span className="caret"></span></a>
+                <a href="#" className="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">欢迎您{this.state.username ? '，'+this.state.username : ''} <span className="caret"></span></a>
                 <ul className="dropdown-menu" role="menu">
-                  <li><a href="#">设置</a></li>
+                  <li><a href="#" >设置</a></li>
                   <li className="divider"></li>
-                  <li><a href="#">退出</a></li>
+                  <li><a href="#"  onClick={this.onLogout.bind(this)}>退出</a></li>
                 </ul>
               </li>
             </ul>

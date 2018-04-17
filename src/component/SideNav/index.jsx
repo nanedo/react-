@@ -69,7 +69,7 @@ class SideNav extends React.Component {
           <li><NavLink exact to="/" activeClassName="active"><i className="fa fa-home"></i> <span>首页</span></NavLink></li>
           <li className="active treeview menu-open">
             <Link to="/product">
-              <i className="fa fa-dashboard"></i> <span>商品</span>
+              <i className="fa fa-laptop"></i> <span>商品</span>
               <span className="pull-right-container">
                 <i className="fa fa-angle-left pull-right"></i>
               </span>
