@@ -1,5 +1,8 @@
 import Axios from 'axios'
-import { resolve } from 'upath';
+import Modal from './Modal'
+import React from 'react'
+
+let _modal = new Modal()
 
 // 请求返回的数据
 /* {
@@ -38,7 +41,7 @@ Axios.interceptors.response.use(function (response) {
   return Promise.reject(error)
 })
 
-class Mutil{
+class Mutil extends React.Component{
   // 统一处理请求
   request(param) {
     let defaultConfig = {
@@ -98,12 +101,19 @@ class Mutil{
 
   // 错误提示
   errorTip (msg) {
-    alert(msg || '有些部件不灵光了')
+    //alert(msg || '有些部件不灵光了')
+    _modal.show({
+      type:'error',
+      desc: msg || '有些部件不灵光了'
+    })
   }
 
   // 成功提示
   successTip (msg) {
-    alert(msg || '操作成功')
+    // alert(msg || '操作成功')
+    _modal.show({
+      desc: msg || '操作成功'
+    })
   }
 
   // 去除字符俩边的空白
@@ -180,6 +190,12 @@ class Mutil{
       }
       index++
     }
+  }
+
+  render(){
+    return (
+      <Modal />
+    )
   }
 
 }
