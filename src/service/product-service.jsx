@@ -32,6 +32,24 @@ class Product {
       }
     })
   }
+  
+  changeCategoryName (data) {
+    return _mm.request({
+      method: 'post',
+      url: '/manage/category/set_category_name.do',
+      data
+    })
+  }
+
+  getAllCategoryList (categoryId = 0) {
+    return _mm.request({
+      method: 'post',
+      url: '/manage/category/get_deep_category.do',
+      data:{
+        categoryId
+      }
+    })
+  }
 
   // 增加分类
   addCategory(categoryName, parentId=0) {

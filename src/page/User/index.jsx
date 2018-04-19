@@ -112,7 +112,7 @@ export default class UserList extends React.Component {
                   </div></div>
                   <div className="row">
                       <div className="col-sm-6 col-xs-12">
-                        <Pagination onChange={this.onChange.bind(this, event)} current={this.state.pageNum} total={this.state.total} pageSize={this.state.pageSize} />
+                        <Pagination onChange={this.onChange.bind(this)} current={this.state.pageNum} total={this.state.total} pageSize={this.state.pageSize} />
                       </div>
                       <div className="col-sm-6 col-xs-12">
                         <div className="dataTables_info" id="example1_info" role="status" aria-live="polite">共{this.state.total}条数据</div>

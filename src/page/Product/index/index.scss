@@ -22,6 +22,10 @@
     margin-right: 5px;
     position: relative;
 
+    img{
+      max-height: 100%;
+    }
+
     .fa{
       position: absolute;
       top: -4px;

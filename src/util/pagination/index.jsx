@@ -2,6 +2,8 @@ import React from 'react'
 import RcPagination from 'rc-pagination'
 import 'rc-pagination/assets/index.css'
 
+//https://github.com/react-component/pagination
+
 class Pagination extends React.Component {
   constructor (props) {
     super(props)
