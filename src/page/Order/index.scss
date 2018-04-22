@@ -8,8 +8,12 @@
   color: #555;
   background-color: #fff;
   background-image: none;
+  word-break: break-all;
 }
-.detailInfo{
+.dataTable td{
+  word-break: break-all;
+}
+.detailInfo2{
 outline: none;
 user-select: text;
 border: 1px solid rgb(204, 204, 204);
@@ -17,8 +21,8 @@ position: relative;
 overflow: auto;
 font-size: 16px;
 
-img{
-  max-width: 100px;
-  max-height: 100px;
-}
+  img{
+    max-width: 100px;
+    max-height: 100px;
+  }
 }

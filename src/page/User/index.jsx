@@ -105,7 +105,7 @@ export default class UserList extends React.Component {
                         <td>{item.role === 1 ? '管理员' : '普通用户'}</td>
                         <td>{item.email}</td>
                         <td>{item.phone}</td>
-                        <td>{new Date(item.createTime).toLocaleDateString()}</td>
+                        <td>{item.createTime}</td>
                       </tr>)
                     )}
                   </TableList>

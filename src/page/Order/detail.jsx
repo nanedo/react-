@@ -32,7 +32,7 @@ export default class orderEdit extends React.Component {
       localImages: [],
       htmlContent: '',
       initialContent: '',
-      orderItem: [],
+      order_item: [],
       ship:{
         receiver_name: ''
       },
@@ -153,9 +153,9 @@ export default class orderEdit extends React.Component {
                 {/* 订单详情 */}
                 <div className="form-group">
                   <label className="col-sm-2 control-label">商品详情</label>
-                  <div className="detailInfo col-sm-5">
-                  <TableList tableHeads={tableHeads} listLength={this.state.orderItem.length} >
-                    {this.state.orderItem.map((item, index) =>
+                  <div className="detailInfo2 col-sm-5">
+                  <TableList tableHeads={tableHeads} listLength={this.state.order_item.length} >
+                    {this.state.order_item.map((item, index) =>
                         (<tr role="row" key={index} className={index%2 ? '' : 'odd'}>
                           <td className="sorting_1"><img src={item.product_image} /></td>
                           <td>{item.product_name}</td>
